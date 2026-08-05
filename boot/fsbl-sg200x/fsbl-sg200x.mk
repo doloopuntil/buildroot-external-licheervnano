@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-FSBL_SG200X_VERSION = custom
-FSBL_SG200X_SITE = /tmp/licheervnano-ref/src/licheerv-nano-build-vendor
-FSBL_SG200X_SITE_METHOD = local
+FSBL_SG200X_VERSION = d4003f15b35d43ad4842f427050ab2bba0114fa5
+FSBL_SG200X_SITE = https://github.com/sipeed/LicheeRV-Nano-Build.git
+FSBL_SG200X_SITE_METHOD = git
 FSBL_SG200X_INSTALL_IMAGES = YES
 FSBL_SG200X_INSTALL_TARGET = NO
 FSBL_SG200X_LICENSE = Proprietary

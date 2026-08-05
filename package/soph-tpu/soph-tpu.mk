@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-SOPH_TPU_VERSION = custom
-SOPH_TPU_SITE = /tmp/licheervnano-ref
-SOPH_TPU_SITE_METHOD = local
+SOPH_TPU_VERSION = 3bf6e4d22956d8d36644abac4b514d68ef8f0e81
+SOPH_TPU_SITE = https://github.com/varyhin/licheervnano.git
+SOPH_TPU_SITE_METHOD = git
 SOPH_TPU_LICENSE = GPL-2.0
 SOPH_TPU_LICENSE_FILES = LICENSE
 
@@ -21,8 +21,7 @@ define SOPH_TPU_APPLY_PATCHES_AND_OVERLAY
 	mkdir -p $(SOPH_TPU_SRC)/uapi
 	cp $(SOPH_TPU_PKGDIR)/cvi_tpu_ioctl.h $(SOPH_TPU_SRC)/uapi/
 endef
-# Sources are pre-patched in the reference directory
-# SOPH_TPU_POST_EXTRACT_HOOKS += SOPH_TPU_APPLY_PATCHES_AND_OVERLAY
+SOPH_TPU_POST_EXTRACT_HOOKS += SOPH_TPU_APPLY_PATCHES_AND_OVERLAY
 
 define SOPH_TPU_BUILD_CMDS
 	$(LINUX_MAKE_ENV) $(MAKE) -C $(LINUX_DIR) $(LINUX_MAKE_FLAGS) \

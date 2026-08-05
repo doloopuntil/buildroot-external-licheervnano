@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-FIP_SG200X_VERSION = custom
-FIP_SG200X_SITE = /tmp/licheervnano-ref
-FIP_SG200X_SITE_METHOD = local
+FIP_SG200X_VERSION = 3bf6e4d22956d8d36644abac4b514d68ef8f0e81
+FIP_SG200X_SITE = https://github.com/varyhin/licheervnano.git
+FIP_SG200X_SITE_METHOD = git
 FIP_SG200X_INSTALL_IMAGES = YES
 FIP_SG200X_INSTALL_TARGET = NO
 FIP_SG200X_LICENSE = MIT

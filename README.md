@@ -45,7 +45,7 @@ The variant is selected at boot via U-Boot's extlinux menu (default: W).
 
 ```sh
 cd /path/to/buildroot
-make BR2_EXTERNAL=/path/to/buildroot-external-licheerv-nano sipeed_licheerv_nano_defconfig
+make BR2_EXTERNAL=/path/to/buildroot-external-licheervnano sipeed_licheerv_nano_defconfig
 make -j$(nproc)
 ```
 
@@ -83,7 +83,7 @@ Or use balenaEtcher / Raspberry Pi Imager.
 
 - **Serial console**: UART0 TX/RX on the 2×14 header, 115200 8N1
 - **Root login**: set via `make menuconfig` → System configuration
-- **Network**: Ethernet `end0` uses DHCP (if E/WE variant)
+- **Network**: Ethernet `eth0` uses DHCP (if E/WE variant)
 
 ## SD card layout
 

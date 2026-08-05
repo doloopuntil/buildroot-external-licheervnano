@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-AIC8800_MODULES_VERSION = custom
-AIC8800_MODULES_SITE = /tmp/licheervnano-ref
-AIC8800_MODULES_SITE_METHOD = local
+AIC8800_MODULES_VERSION = 3bf6e4d22956d8d36644abac4b514d68ef8f0e81
+AIC8800_MODULES_SITE = https://github.com/varyhin/licheervnano.git
+AIC8800_MODULES_SITE_METHOD = git
 AIC8800_MODULES_LICENSE = GPL-2.0
 AIC8800_MODULES_LICENSE_FILES = LICENSE
 
@@ -20,8 +20,7 @@ define AIC8800_MODULES_APPLY_PATCHES
 		patch -p1 < $$patchfile || exit 1; \
 	done
 endef
-# Sources are pre-patched in the reference directory
-# AIC8800_MODULES_POST_EXTRACT_HOOKS += AIC8800_MODULES_APPLY_PATCHES
+AIC8800_MODULES_POST_EXTRACT_HOOKS += AIC8800_MODULES_APPLY_PATCHES
 
 define AIC8800_MODULES_BUILD_CMDS
 	$(LINUX_MAKE_ENV) $(MAKE) -C $(LINUX_DIR) $(LINUX_MAKE_FLAGS) \
