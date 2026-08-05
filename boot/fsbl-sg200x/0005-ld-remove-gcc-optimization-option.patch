@@ -1,0 +1,5 @@
+--- a/fsbl/lib/cpu/riscv/cpu.mk
++++ b/fsbl/lib/cpu/riscv/cpu.mk
+@@ -24 +24 @@
+-	--fatal-warnings -Os \
++	--fatal-warnings \

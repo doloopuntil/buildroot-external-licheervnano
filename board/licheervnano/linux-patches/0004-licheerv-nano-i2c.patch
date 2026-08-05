@@ -1,0 +1,109 @@
+Назначение: активировать I2C1 и I2C3 на 2x14-pin header (доступ к внешним
+I²C устройствам). Эффективно шины доступны на вариантах B и E. Патч ставит
+status="okay" во всех 4 board-DTS, но на W/WE те же пады SD1_D3/D0/CMD/CLK
+это шина SDIO Wi-Fi AIC8800, поэтому узлы &i2c1/&i2c3 на W/WE отключаются
+обратно патчем 0021.
+
+Применяется поверх patches/linux/0001 (который создал sg2002-licheerv-
+nano-e/w/we.dts) через:
+    git -C src/linux apply patches/linux/0004-licheerv-nano-i2c.patch
+
+Note: пады I2C1/I2C3 здесь только включаются; их pinmux переносится в
+board-DTS pinctrl патчем 0021 (группы i2c1_cfg/i2c3_cfg). Прежний
+runtime devmem-сервис setup-i2c-pinmux.service удалён 2026-06-11.
+Справочные регистры пинов (сверено по TRM гл.10 PINMUX, Table 10.35):
+  I2C1: SD1_D3 0x030010D0 func2=IIC1_SCL, SD1_D0 0x030010DC func2=IIC1_SDA
+  I2C3: SD1_CMD 0x030010E0 func2=IIC3_SCL, SD1_CLK 0x030010E4 func2=IIC3_SDA
+
+--- a/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-b.dts
++++ b/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-b.dts
+@@ -24,6 +24,8 @@
+ 		serial2 = &uart2;
+ 		serial3 = &uart3;
+ 		serial4 = &uart4;
++		i2c1 = &i2c1;
++		i2c3 = &i2c3;
+ 	};
+ 
+ 	chosen {
+@@ -133,3 +135,11 @@
+ &saradc {
+ 	status = "okay";
+ };
++
++&i2c1 {
++	status = "okay";
++};
++
++&i2c3 {
++	status = "okay";
++};
+--- a/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-e.dts	2026-05-26 17:50:52.002899926 +0300
++++ b/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-e.dts	2026-05-26 18:45:03.293229878 +0300
+@@ -28,6 +28,8 @@
+ 		serial2 = &uart2;
+ 		serial3 = &uart3;
+ 		serial4 = &uart4;
++		i2c1 = &i2c1;
++		i2c3 = &i2c3;
+ 		ethernet0 = &gmac0;
+ 	};
+ 
+@@ -149,3 +151,11 @@
+ &saradc {
+ 	status = "okay";
+ };
++
++&i2c1 {
++	status = "okay";
++};
++
++&i2c3 {
++	status = "okay";
++};
+--- a/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-w.dts
++++ b/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-w.dts
+@@ -33,6 +33,8 @@
+ 		serial2 = &uart2;
+ 		serial3 = &uart3;
+ 		serial4 = &uart4;
++		i2c1 = &i2c1;
++		i2c3 = &i2c3;
+ 	};
+ 
+ 	chosen {
+@@ -192,3 +194,11 @@
+ &saradc {
+ 	status = "okay";
+ };
++
++&i2c1 {
++	status = "okay";
++};
++
++&i2c3 {
++	status = "okay";
++};
+--- a/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-we.dts	2026-05-26 17:50:52.002899926 +0300
++++ b/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-we.dts	2026-05-26 18:45:03.301229681 +0300
+@@ -37,6 +37,8 @@
+ 		serial2 = &uart2;
+ 		serial3 = &uart3;
+ 		serial4 = &uart4;
++		i2c1 = &i2c1;
++		i2c3 = &i2c3;
+ 		ethernet0 = &gmac0;
+ 	};
+ 
+@@ -208,3 +210,11 @@
+ &saradc {
+ 	status = "okay";
+ };
++
++&i2c1 {
++	status = "okay";
++};
++
++&i2c3 {
++	status = "okay";
++};

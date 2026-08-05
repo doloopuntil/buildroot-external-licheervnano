@@ -1,0 +1,11 @@
+config BR2_TARGET_FSBL_SG200X
+	bool "fsbl-sg200x"
+	depends on BR2_riscv
+	help
+	  First Stage Bootloader (BL2) for Sophgo SG2002 (CV181x family).
+	  Vendor TF-A fork from Sipeed LicheeRV-Nano-Build, patched for
+	  mainline RISC-V toolchain.
+
+	  Outputs cv181x.bin for the FIP container.
+
+	  https://github.com/sipeed/LicheeRV-Nano-Build

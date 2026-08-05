@@ -1,0 +1,12 @@
+config BR2_PACKAGE_AIC8800_MODULES
+	bool "aic8800-modules"
+	depends on BR2_LINUX_KERNEL
+	depends on BR2_riscv
+	help
+	  AIC8800D80 SDIO Wi-Fi 6 and Bluetooth 5 kernel modules for
+	  Sipeed LicheeRV Nano-W/WE boards.
+
+	  Builds three modules: aic8800_bsp.ko, aic8800_fdrv.ko,
+	  aic8800_btlpm.ko. Forward-ported from vendor 5.10 to mainline 6.18.
+
+	  https://github.com/varyhin/licheervnano

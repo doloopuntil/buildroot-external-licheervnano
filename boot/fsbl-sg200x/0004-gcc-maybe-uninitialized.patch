@@ -1,0 +1,6 @@
+--- a/fsbl/Makefile
++++ b/fsbl/Makefile
+@@ -111 +111,2 @@
+-TF_CFLAGS += -ggdb3 -gdwarf-2
++TF_CFLAGS += -ggdb3 -gdwarf-2
++TF_CFLAGS += -Wno-error=maybe-uninitialized

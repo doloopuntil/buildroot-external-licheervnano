@@ -1,0 +1,11 @@
+config BR2_PACKAGE_SOPH_TPU
+	bool "soph-tpu"
+	depends on BR2_LINUX_KERNEL
+	depends on BR2_riscv
+	help
+	  Cvitek/Sophgo TPU (NPU) kernel driver for SG2002 (0.5 TOPS INT8).
+	  Forward-ported from vendor 5.10 kernel to mainline 6.18.
+
+	  Builds soph_tpu.ko. Required for on-chip AI inference.
+
+	  https://github.com/varyhin/licheervnano

@@ -1,0 +1,10 @@
+config BR2_TARGET_LICHEERVNANO_FIRMWARE
+	bool "licheervnano-firmware"
+	depends on BR2_riscv
+	help
+	  Boot firmware blobs and Wi-Fi firmware for the Sipeed LicheeRV Nano:
+	  - ddr_param.bin (DDR3 initialization parameters)
+	  - cvirtos.bin (FreeRTOS coprocessor firmware)
+	  - AIC8800 SDIO Wi-Fi firmware (aic8800_u03, aic8800d80_u02)
+
+	  https://github.com/varyhin/licheervnano

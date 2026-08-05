@@ -1,0 +1,13 @@
+config BR2_TARGET_FIP_SG200X
+	bool "fip-sg200x"
+	depends on BR2_TARGET_FSBL_SG200X
+	depends on BR2_TARGET_OPENSBI
+	depends on BR2_TARGET_UBOOT
+	depends on BR2_TARGET_LICHEERVNANO_FIRMWARE
+	depends on BR2_riscv
+	help
+	  Assembles the FIP (Firmware Image Package) boot container
+	  for Sophgo SG2002. Combines FSBL, OpenSBI, U-Boot, and
+	  vendor boot blobs into fip.bin.
+
+	  https://github.com/varyhin/licheervnano
