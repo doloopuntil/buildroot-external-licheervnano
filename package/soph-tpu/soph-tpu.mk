@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-SOPH_TPU_VERSION = 3bf6e4d22956d8d36644abac4b514d68ef8f0e81
-SOPH_TPU_SITE = $(call github,varyhin,licheervnano,$(SOPH_TPU_VERSION))
-SOPH_TPU_SITE_METHOD = git
+SOPH_TPU_VERSION = custom
+SOPH_TPU_SITE = /tmp/licheervnano-ref
+SOPH_TPU_SITE_METHOD = local
 SOPH_TPU_LICENSE = GPL-2.0
 SOPH_TPU_LICENSE_FILES = LICENSE
 
@@ -16,12 +16,13 @@ SOPH_TPU_SRC = $(@D)/src/cvitek-tpu-vendor
 
 define SOPH_TPU_APPLY_PATCHES_AND_OVERLAY
 	cd $(SOPH_TPU_SRC) && \
-	patch -p1 < $(SOPH_TPU_PKGDIR)/0001-forward-port-soph_tpu-kernel-6.18.patch
+	patch -p1 < $(SOPH_TPU_PKGDIR)/patches/0001-forward-port-soph_tpu-kernel-6.18.patch
 	cp $(SOPH_TPU_PKGDIR)/tpu_kernel_compat.h $(SOPH_TPU_SRC)/
 	mkdir -p $(SOPH_TPU_SRC)/uapi
 	cp $(SOPH_TPU_PKGDIR)/cvi_tpu_ioctl.h $(SOPH_TPU_SRC)/uapi/
 endef
-SOPH_TPU_POST_EXTRACT_HOOKS += SOPH_TPU_APPLY_PATCHES_AND_OVERLAY
+# Sources are pre-patched in the reference directory
+# SOPH_TPU_POST_EXTRACT_HOOKS += SOPH_TPU_APPLY_PATCHES_AND_OVERLAY
 
 define SOPH_TPU_BUILD_CMDS
 	$(LINUX_MAKE_ENV) $(MAKE) -C $(LINUX_DIR) $(LINUX_MAKE_FLAGS) \

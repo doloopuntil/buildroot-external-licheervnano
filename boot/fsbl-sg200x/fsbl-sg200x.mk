@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-FSBL_SG200X_VERSION = d4003f15b35d43ad4842f427050ab2bba0114fa5
-FSBL_SG200X_SITE = $(call github,sipeed,LicheeRV-Nano-Build,$(FSBL_SG200X_VERSION))
-FSBL_SG200X_SITE_METHOD = git
+FSBL_SG200X_VERSION = custom
+FSBL_SG200X_SITE = /tmp/licheervnano-ref/src/licheerv-nano-build-vendor
+FSBL_SG200X_SITE_METHOD = local
 FSBL_SG200X_INSTALL_IMAGES = YES
 FSBL_SG200X_INSTALL_TARGET = NO
 FSBL_SG200X_LICENSE = Proprietary
@@ -24,6 +24,7 @@ define FSBL_SG200X_BUILD_CMDS
 		DDR_CFG=ddr3_1866_x16 TPU_PERF_MODE=y OD_CLK_SEL=y \
 		BUILD_STRING=reproducible-bld \
 		BUILD_MESSAGE_TIMESTAMP='"0000-00-00T00:00:00+00:00"' \
+		CFLAGS="-fno-stack-protector" \
 		O=$(@D)/fsbl/build
 endef
 

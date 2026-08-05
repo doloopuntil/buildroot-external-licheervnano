@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-AIC8800_MODULES_VERSION = 3bf6e4d22956d8d36644abac4b514d68ef8f0e81
-AIC8800_MODULES_SITE = $(call github,varyhin,licheervnano,$(AIC8800_MODULES_VERSION))
-AIC8800_MODULES_SITE_METHOD = git
+AIC8800_MODULES_VERSION = custom
+AIC8800_MODULES_SITE = /tmp/licheervnano-ref
+AIC8800_MODULES_SITE_METHOD = local
 AIC8800_MODULES_LICENSE = GPL-2.0
 AIC8800_MODULES_LICENSE_FILES = LICENSE
 
@@ -16,11 +16,12 @@ AIC8800_MODULES_SRC = $(@D)/src/aic8800-vendor
 
 define AIC8800_MODULES_APPLY_PATCHES
 	cd $(AIC8800_MODULES_SRC) && \
-	for patchfile in $(sort $(wildcard $(AIC8800_MODULES_PKGDIR)/*.patch)); do \
+	for patchfile in $(sort $(wildcard $(AIC8800_MODULES_PKGDIR)/patches/*.patch)); do \
 		patch -p1 < $$patchfile || exit 1; \
 	done
 endef
-AIC8800_MODULES_POST_EXTRACT_HOOKS += AIC8800_MODULES_APPLY_PATCHES
+# Sources are pre-patched in the reference directory
+# AIC8800_MODULES_POST_EXTRACT_HOOKS += AIC8800_MODULES_APPLY_PATCHES
 
 define AIC8800_MODULES_BUILD_CMDS
 	$(LINUX_MAKE_ENV) $(MAKE) -C $(LINUX_DIR) $(LINUX_MAKE_FLAGS) \
