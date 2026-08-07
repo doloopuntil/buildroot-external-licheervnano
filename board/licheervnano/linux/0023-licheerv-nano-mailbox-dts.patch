@@ -1,0 +1,23 @@
+diff -urN a/arch/riscv/boot/dts/sophgo/cv180x.dtsi b/arch/riscv/boot/dts/sophgo/cv180x.dtsi
+--- a/arch/riscv/boot/dts/sophgo/cv180x.dtsi
++++ b/arch/riscv/boot/dts/sophgo/cv180x.dtsi
+@@ -25,6 +25,19 @@ soc {
+ 		#size-cells = <1>;
+ 		ranges;
+ 
++		mailbox: mailbox@1900000 {
++			compatible = "sophgo,cv1800b-mailbox";
++			reg = <0x01900000 0x1000>;
++			interrupts = <101 IRQ_TYPE_LEVEL_HIGH>;
++			#mbox-cells = <2>;
++		};
++
++		mbox_demo: mbox-demo {
++			compatible = "cv1800-mbox-demo";
++			mboxes = <&mailbox 0 1>;
++			mbox-names = "cv1800-mbox-demo";
++		};
++
+ 		rst: reset-controller@3003000 {
+ 			compatible = "sophgo,cv1800b-reset";
+ 			reg = <0x3003000 0x1000>;

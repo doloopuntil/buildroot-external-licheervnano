@@ -1,0 +1,10 @@
+config BR2_PACKAGE_SG2002_8051_DEMO
+	bool "sg2002-8051-demo"
+	depends on BR2_riscv
+	help
+	  8051 mailbox echo demo for SG2002 SoC. Includes pre-compiled
+	  8051 firmware (mailbox echo) and a Linux loader program that
+	  starts the 8051 core and demonstrates bidirectional IPC via
+	  the hardware mailbox (0x01900000).
+
+	  Test: 8051-mbox-loader

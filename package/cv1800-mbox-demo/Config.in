@@ -1,0 +1,12 @@
+config BR2_PACKAGE_CV1800_MBOX_DEMO
+	bool "cv1800-mbox-demo"
+	depends on BR2_LINUX_KERNEL
+	depends on BR2_riscv
+	help
+	  Kernel module and userspace test program demonstrating
+	  SG2002 hardware mailbox (sophgo,cv1800b-mailbox) for
+	  inter-core IPC between C906B (Linux), C906L (RTOS),
+	  and 8051.
+
+	  Load: modprobe cv1800_mbox_demo
+	  Test: mbox-demo

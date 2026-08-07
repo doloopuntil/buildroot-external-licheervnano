@@ -1,5 +1,7 @@
 source "$BR2_EXTERNAL_SIPEED_LICHEERV_NANO_PATH/package/aic8800-modules/Config.in"
 source "$BR2_EXTERNAL_SIPEED_LICHEERV_NANO_PATH/package/soph-tpu/Config.in"
+source "$BR2_EXTERNAL_SIPEED_LICHEERV_NANO_PATH/package/cv1800-mbox-demo/Config.in"
+source "$BR2_EXTERNAL_SIPEED_LICHEERV_NANO_PATH/package/sg2002-8051-demo/Config.in"
 source "$BR2_EXTERNAL_SIPEED_LICHEERV_NANO_PATH/boot/fsbl-sg200x/Config.in"
 source "$BR2_EXTERNAL_SIPEED_LICHEERV_NANO_PATH/boot/fip-sg200x/Config.in"
 source "$BR2_EXTERNAL_SIPEED_LICHEERV_NANO_PATH/boot/licheervnano-firmware/Config.in"
