@@ -87,15 +87,13 @@ DT-binding ещё имеет commit be3e2a04 для документации, н
  	return dchan;
  }
  
-@@ -1508,6 +1520,8 @@
- 			return ret;
+@@ -1509,4 +1521,6 @@
  	}
  
 +	chip->dw->hdata->use_handshake_as_channel_number = !!(flags & AXI_DMA_FLAG_ARG0_AS_CHAN);
 +
  	chip->dw->hdata->use_cfg2 = !!(flags & AXI_DMA_FLAG_USE_CFG2);
  
- 	chip->core_clk = devm_clk_get(chip->dev, "core-clk");
 @@ -1664,6 +1678,9 @@
  		.compatible = "intel,kmb-axi-dma",
  		.data = (void *)AXI_DMA_FLAG_HAS_APB_REGS,
