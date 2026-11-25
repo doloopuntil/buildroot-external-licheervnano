@@ -1,7 +1,6 @@
 Назначение: backport mainline commit b49c70273801 (мердж 2026-02-26) который
 добавляет CV1800B-specific compatible "sophgo,cv1800b-axi-dma" в
-dw-axi-dmac driver. Сам узел dmac получает этот compatible в патче 0008
-(audio DT-узлы), этот патч трогает только драйверную часть.
+dw-axi-dmac driver. Узел dmac получает этот compatible в board DTS патчем 0010, этот патч трогает только драйверную часть.
 
 Phase 5 audio bring-up fix. После активации audio (Phase 4) на железе
 дrecord падал с:
@@ -25,7 +24,7 @@ CV1800B DMA', автор Inochi Amaoto, мердж Vinod Koul 2026-02-26) это
 Этот патч это драйверная часть backport mainline-коммита (of_match-запись
 + флаг AXI_DMA_FLAG_ARG0_AS_CHAN + путь of_xlate по args[0]). Плюс
 локальная правка вне mainline-коммита: понижение apb_regs dev_err -> dev_dbg.
-Compatible самого dmac-узла выставлен в патче 0008.
+Compatible самого dmac-узла выставлен в патче 0010.
 
 DT-binding ещё имеет commit be3e2a04 для документации, не импортируется
 (нужен только для dtbs_check, рантайм его не использует).

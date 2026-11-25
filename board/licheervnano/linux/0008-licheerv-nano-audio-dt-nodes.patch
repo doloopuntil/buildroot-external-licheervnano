@@ -10,11 +10,10 @@ upstream mainline формат (sophgo,cv1800b-*), которые попали �
 B/E/W/WE отдельным patch'ем. Drivers портируются в Phase 3 как новые
 файлы в src/linux/sound/soc/sophgo/ это снимок из mainline 75ca8602.
 
-Помимо добавления узлов, патч правит существующий узел dmac
-(dma-controller@4330000): добавляет ведущий compatible
-"sophgo,cv1800b-axi-dma" перед "snps,axi-dma-1.01a" (в паре с
-driver-match из патча 0011), чтобы для audio выбирался dmamux
-dma-master quirk-путь.
+Compatible узла dmac (dma-controller@4330000) здесь не меняется: в stable
+6.18.65 "sophgo,cv1800b-axi-dma", "snps,axi-dma-1.01a" уже стоит в
+cv180x.dtsi, а для более ранних 6.18.x его выставляет патч 0010 в board
+DTS (в паре с driver-match из патча 0011).
 
 Добавленные узлы (ниже названы по DT-label@адрес для читаемости; реальные
 node-name это syscon@/i2s@/audio-codec@):
@@ -70,15 +69,6 @@ node-name это syscon@/i2s@/audio-codec@):
 Применяется через:
 --- a/arch/riscv/boot/dts/sophgo/cv180x.dtsi
 +++ b/arch/riscv/boot/dts/sophgo/cv180x.dtsi
-@@ -397,7 +397,7 @@
- 		};
- 
- 		dmac: dma-controller@4330000 {
--			compatible = "snps,axi-dma-1.01a";
-+			compatible = "sophgo,cv1800b-axi-dma", "snps,axi-dma-1.01a";
- 			reg = <0x04330000 0x1000>;
- 			interrupts = <SOC_PERIPHERAL_IRQ(13) IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&clk CLK_SDMA_AXI>, <&clk CLK_SDMA_AXI>;
 @@ -442,5 +442,84 @@
  			dr_mode = "otg";
  			status = "disabled";

@@ -13,6 +13,11 @@ Phase 4 audio bring-up. После Phase 2 (DT-узлы добавлены в cv
   &sound_adc  internal ADC codec (микрофон LMA2718T421, U12 по схеме 70418)
   &sound_dac  internal DAC codec (динамик через AW8010A, U11 PA по схеме 70418)
 
+Compatible узла &dmac ("sophgo,cv1800b-axi-dma", "snps,axi-dma-1.01a")
+задаётся здесь, в board DTS, в паре с driver-match из патча 0011: так
+патч 0008 не зависит от того, есть ли этот compatible в cv180x.dtsi
+(в stable 6.18.65 есть, в 6.18.29 нет).
+
 Добавляется новый узел `sound` (simple-audio-card) с двумя DAI links:
   link@0: capture path  это i2s0 ↔ sound_adc (микрофон)
   link@1: playback path это i2s3 ↔ sound_dac (динамик)
@@ -49,12 +54,13 @@ SPK_EN стрим-гейтится патчами 0012/0013).
 
 --- a/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-b.dts
 +++ b/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-b.dts
-@@ -155,3 +155,65 @@
+@@ -155,3 +155,66 @@
  &usb {
  	status = "okay";
  };
 +
 +&dmac {
++	compatible = "sophgo,cv1800b-axi-dma", "snps,axi-dma-1.01a";
 +	status = "okay";
 +};
 +
@@ -117,12 +123,13 @@ SPK_EN стрим-гейтится патчами 0012/0013).
 +};
 --- a/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-e.dts
 +++ b/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-e.dts
-@@ -171,3 +171,65 @@
+@@ -171,3 +171,66 @@
  &usb {
  	status = "okay";
  };
 +
 +&dmac {
++	compatible = "sophgo,cv1800b-axi-dma", "snps,axi-dma-1.01a";
 +	status = "okay";
 +};
 +
@@ -186,12 +193,13 @@ SPK_EN стрим-гейтится патчами 0012/0013).
 
 --- a/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-w.dts
 +++ b/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-w.dts
-@@ -214,3 +214,65 @@
+@@ -214,3 +214,66 @@
  &usb {
  	status = "okay";
  };
 +
 +&dmac {
++	compatible = "sophgo,cv1800b-axi-dma", "snps,axi-dma-1.01a";
 +	status = "okay";
 +};
 +
@@ -254,12 +262,13 @@ SPK_EN стрим-гейтится патчами 0012/0013).
 +};
 --- a/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-we.dts
 +++ b/arch/riscv/boot/dts/sophgo/sg2002-licheerv-nano-we.dts
-@@ -230,3 +230,65 @@
+@@ -230,3 +230,66 @@
  &usb {
  	status = "okay";
  };
 +
 +&dmac {
++	compatible = "sophgo,cv1800b-axi-dma", "snps,axi-dma-1.01a";
 +	status = "okay";
 +};
 +
